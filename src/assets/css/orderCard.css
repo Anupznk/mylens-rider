@@ -1,0 +1,43 @@
+.order-img{
+    border-radius: 1em;
+}
+
+.order-container{
+    padding: 2em;
+    width: 100%;
+    border-radius: 1em;
+    box-shadow: 0 0 10px rgba(61, 51, 64, 0.23);
+}
+
+.count{
+    margin-left: 1em;
+    text-align: center;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    background-color: #258F67;
+}
+
+.vertical-bar{
+    width: 1px;
+    alignment: right;
+    height: 100%;
+    background-color: #eeeeee;
+}
+
+.prescription-img{
+    margin-top: 1em;
+    border-radius: 1em;
+    /*box-shadow: 0 0 10px rgba(61, 51, 64, 0.23);*/
+}
+
+.custom-hr{
+    background-color: #dadada;
+    width: 91.8%;
+
+    height: 1px;
+}
