@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import {showToast} from "../../App";
 import Cookies from 'universal-cookie';
+import Header from "../home/Header";
+import {base_url} from "../../index";
 
 const Login = props => {
 
@@ -33,7 +35,8 @@ const Login = props => {
             showToast("Don't keep any of the fields empty")
         } else {
             // setLoading(true);
-            axios.post(`http://localhost:8080/api/v1.0/merchant/auth/login`, {
+            // todo: fix this with rider api
+            axios.post(base_url + '/merchant/auth/login', {
                 phone: phone,
                 password: password,
                 type: 'merchant'
@@ -57,6 +60,9 @@ const Login = props => {
     return (
         <div style={{backgroundColor: "#F3F4F8"}}>
             <Grid container spacing={1} padding={1}>
+
+                <Header bg={'#293341'}/>
+                <br/><br/>
 
                 <Grid item xs={12} md={12}>
                 </Grid>
