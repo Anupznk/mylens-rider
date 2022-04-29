@@ -7,6 +7,7 @@ import Header from "../home/Header";
 import SingleItem from "./SingleItem";
 import {useNavigate} from "react-router-dom";
 
+
 const RiderOrder = props => {
 
     const navigate = useNavigate()
@@ -16,37 +17,30 @@ const RiderOrder = props => {
         items: [
             {
                 id: "JW002",
-                imgURL: {dummyImg}
+                price: 1900,
             },
-
             {
                 id: "JW001",
-                imgURL: {dummyImg}
+                price: 2900,
             },
             {
                 id: "JW003",
-                imgURL: {dummyImg}
+                price: 900,
             },
             {
                 id: "JW004",
-                imgURL: {dummyImg}
+                price: 1700,
             },
             {
                 id: "JW005",
-                imgURL: {dummyImg}
+                price: 1900,
             },
             {
                 id: "JW006",
-                imgURL: {dummyImg}
+                price: 1900,
             },
-            {
-                id: "JW007",
-                imgURL: {dummyImg}
-            },
-            {
-                id: "JW008",
-                imgURL: {dummyImg}
-            },
+
+
         ]
 
     }
@@ -72,16 +66,18 @@ const RiderOrder = props => {
                     </div>
                 </a>
 
-                {/*<Grid className="prod-card-container" marginTop={2} marginLeft={.05} marginBottom={2}*/}
-                {/*      container paddingBottom={1} spacing={2} paddingRight={2}>*/}
-                {/*    {prodList.items?.map((singleItem) => (*/}
+                <div className="custom-hr"></div>
 
-                {/*        <Grid item xs={6}>*/}
-                {/*            <SingleItem product={singleItem}/>*/}
-                {/*        </Grid>*/}
+                <Grid marginTop={2} marginLeft={.05} marginBottom={2}
+                      container paddingBottom={1} spacing={2} paddingRight={2}>
+                    {prodList.items?.map((singleItem) => (
 
-                {/*    ))}*/}
-                {/*</Grid>*/}
+                        <div>
+                            Product ID: {singleItem.id} <br/>
+                        </div>
+
+                    ))}
+                </Grid>
 
                 <Grid container spacing={2}>
 
@@ -97,13 +93,14 @@ const RiderOrder = props => {
                             height: "3em",
                             fontWeight: "bold",
                             borderColor: "#485253",
+
                         }}
                                 onClick={() => {
                                     navigate('../')
                                 }}
                                 fullWidth size="small" color="success" disableElevation
                                 variant="outlined">
-                            Cancel
+                            Back
                         </Button>
 
                     </Grid>
@@ -126,7 +123,7 @@ const RiderOrder = props => {
                                 }}
                                 fullWidth size="small" disableElevation
                                 variant="contained">
-                            Place Order
+                            Checkout
                         </Button>
 
                     </Grid>

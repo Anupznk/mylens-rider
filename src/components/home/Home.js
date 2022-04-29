@@ -10,6 +10,7 @@ import {base_url} from "../../index";
 import {incomingCnt, setIncomingCnt, setLoading, setOutgoingCnt, showToast} from "../../App";
 import RiderCard from "../rider/RiderCard";
 import Tabs from "./Tabs";
+import PendingList from "../rider/PendingList";
 const cookies = new Cookies();
 const Home = props => {
     var navigate=useNavigate()
@@ -44,7 +45,7 @@ const Home = props => {
             <br/><br/><br/>
             <Tabs pendingRides={<Grid container spacing={1}>
 
-                <RiderCard/>
+                <PendingList/>
             </Grid>}/>
 
 

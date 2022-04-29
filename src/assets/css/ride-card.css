@@ -30,3 +30,9 @@ a{
     border-radius: .7em;
     box-shadow: 0 0 10px rgba(61, 51, 64, 0.53);
 }
+
+.custom-hr{
+    width: 100%;
+    height: 1px;
+    background: #e3e3e3;
+}

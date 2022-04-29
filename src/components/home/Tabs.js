@@ -5,6 +5,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import "../../assets/css/tabs.css"
+import RiderHistoryList from "../rider/RiderHistoryList";
 
 const Tabs = props => {
     const [value, setValue] = React.useState('1');
@@ -24,7 +25,7 @@ const Tabs = props => {
                     </TabList>
                 </Box>
                 <TabPanel value="1">{props.pendingRides}</TabPanel>
-                <TabPanel value="2">History items</TabPanel>
+                <TabPanel value="2"><RiderHistoryList/></TabPanel>
 
             </TabContext>
         </Box>
