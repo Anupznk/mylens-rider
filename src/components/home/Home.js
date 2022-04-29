@@ -8,7 +8,8 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import {base_url} from "../../index";
 import {incomingCnt, setIncomingCnt, setLoading, setOutgoingCnt, showToast} from "../../App";
-import RideCard from "../rider/RideCard";
+import RiderCard from "../rider/RiderCard";
+import Tabs from "./Tabs";
 const cookies = new Cookies();
 const Home = props => {
     var navigate=useNavigate()
@@ -38,12 +39,15 @@ const Home = props => {
         <div>
 
             <Header bg={'#293341'}/>
+
+
             <br/><br/><br/>
+            <Tabs pendingRides={<Grid container spacing={1}>
 
-            <Grid container spacing={1} padding={1}>
+                <RiderCard/>
+            </Grid>}/>
 
-                <RideCard/>
-            </Grid>
+
         </div>
     )
 }
