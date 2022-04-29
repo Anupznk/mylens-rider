@@ -1,5 +1,6 @@
 import React from "react";
 import RiderCard from "./RiderCard";
+import {Grid} from "@mui/material";
 
 const PendingList = props => {
 
@@ -27,14 +28,16 @@ const PendingList = props => {
     }
 
     return (
-        <div>
+        <Grid container>
 
+            <Grid item xs={12} marginRight={2} marginLeft={-1} marginTop={-1}>
             {pendingList.items?.map((singleItem) => (
                 <RiderCard singleItem={singleItem} />
             ))}
 
+            </Grid>
 
-        </div>
+        </Grid>
     )
 }
 export default PendingList

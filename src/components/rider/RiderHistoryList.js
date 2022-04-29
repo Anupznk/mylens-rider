@@ -24,7 +24,7 @@ const RiderHistoryList = props => {
     return (
         <Grid container>
 
-            <Grid item xs={12} marginRight={2} marginLeft={-1} marginTop={-1}>
+            <Grid item xs={12} marginRight={2} marginLeft={-2} marginTop={-2}>
             {historyList.items?.map((singleItem) => (
                 <RiderCard singleItem={singleItem} />
             ))}
