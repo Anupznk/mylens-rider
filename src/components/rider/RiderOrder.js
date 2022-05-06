@@ -1,11 +1,10 @@
 import React from 'react'
 import '../../assets/css/ride-card.css'
 import CallIcon from '@mui/icons-material/Call';
-import {Button, Grid} from "@mui/material";
-import dummyImg from "../../assets/images/dev/hehe_test.webp"
+import {Button, FormControl, Grid, InputLabel, MenuItem, Select} from "@mui/material";
 import Header from "../home/Header";
-import SingleItem from "./SingleItem";
 import {useNavigate} from "react-router-dom";
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 
 const RiderOrder = props => {
@@ -45,6 +44,16 @@ const RiderOrder = props => {
 
     }
 
+    const [selectedProd, setselectedProd] = React.useState('');
+
+    const handleChange = (event) => {
+        setselectedProd(event.target.value);
+    };
+
+    function removeItem(id) {
+
+    }
+
     return (
         <div>
             <Header bg={'#293341'}/>
@@ -67,15 +76,75 @@ const RiderOrder = props => {
                 </a>
 
                 <div className="custom-hr"></div>
+                <br/>
+
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Select Product</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={selectedProd}
+                        label="Select Product"
+                        onChange={handleChange}>
+
+                        {prodList.items?.map((singleItem) => (
+                            <MenuItem value={singleItem.id} onClick={()=>{
+                                // todo: navigate to this product profile page
+                            }}>
+                                <Grid container>
+                                    <Grid item xs={9}>
+                                        {singleItem.id}
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        BDT {singleItem.price}
+                                    </Grid>
+                                </Grid>
+
+                            </MenuItem>
+                        ))
+                        }
+
+
+                    </Select>
+                </FormControl>
+
+                <Grid container marginTop={3}>
+                    <Grid item xs={9}>
+
+                    </Grid>
+                    <Grid item xs={3}><b>Price</b></Grid>
+                </Grid>
+
 
                 <Grid marginTop={2} marginLeft={.05} marginBottom={2}
                       container paddingBottom={1} spacing={2} paddingRight={2}>
                     {prodList.items?.map((singleItem) => (
 
-                        <div>
-                            Product ID: {singleItem.id} <br/>
-                        </div>
+                        <Grid container padding={1}>
+                            <Grid item xs={9}>
+                                <Grid container>
+                                    <Grid item xs={2} onClick={() => {
+                                        removeItem(singleItem.id)
+                                    }}>
 
+                                        <RemoveCircleOutlineIcon/>
+                                    </Grid>
+
+                                    <Grid item xs={10}>
+
+                                        {singleItem.id}
+                                    </Grid>
+                                </Grid>
+
+
+                            </Grid>
+
+                            <Grid item xs={3}>
+                                <div>BDT {singleItem.price}</div>
+                            </Grid>
+
+
+                        </Grid>
                     ))}
                 </Grid>
 
@@ -96,7 +165,7 @@ const RiderOrder = props => {
 
                         }}
                                 onClick={() => {
-                                    navigate('../')
+                                    // todo: go back to the card details page
                                 }}
                                 fullWidth size="small" color="success" disableElevation
                                 variant="outlined">
@@ -119,7 +188,7 @@ const RiderOrder = props => {
                             background: "#485253"
                         }}
                                 onClick={() => {
-
+                                    // todo: navigate to checkout page
                                 }}
                                 fullWidth size="small" disableElevation
                                 variant="contained">
