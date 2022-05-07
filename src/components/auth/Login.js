@@ -7,8 +7,11 @@ import {showToast} from "../../App";
 import Cookies from 'universal-cookie';
 import Header from "../home/Header";
 import {base_url} from "../../index";
+import {useNavigate} from "react-router-dom";
 
 const Login = props => {
+
+    const navigate = useNavigate()
 
     const cookies = new Cookies();
 
@@ -35,24 +38,25 @@ const Login = props => {
             showToast("Don't keep any of the fields empty")
         } else {
             // setLoading(true);
-            // todo: fix this with rider api
-            axios.post(base_url + '/merchant/auth/login', {
+            axios.post(base_url + '/rider/auth/login', {
                 phone: phone,
                 password: password,
-                type: 'merchant'
+                type: 'rider'
             }).then(res => {
 
-                showToast(" Logged in successfully");
+                showToast(" Rider Logged in successfully");
                 // setLoggedIn(true);
                 cookies.set('auth', JSON.stringify(res.data), {path: '/', maxAge: COOKIE_AGE})
                 console.log('login response ', res.data)
+
+                navigate('../')
 
                 // setUserInfo(res.data);
 
             }).catch(err => {
                 // setLoading(false);
                 console.log(err)
-                showToast(" Login failed");
+                showToast(" Rider Login failed");
             })
         }
     }

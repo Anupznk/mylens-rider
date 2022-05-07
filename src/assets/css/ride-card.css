@@ -36,3 +36,7 @@ a{
     height: 1px;
     background: #e3e3e3;
 }
+
+.checkList{
+    display: block;
+}
