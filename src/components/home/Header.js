@@ -5,9 +5,14 @@ import icon1 from '../../assets/images/production/icon.svg'
 import icon2 from '../../assets/images/production/logo-v2.svg'
 import {useNavigate} from "react-router-dom";
 import Cookies from "universal-cookie";
+import {checkAuth, logout} from "../../actions/auth";
 
+
+var updateAuthHeader
 
 const Header = props => {
+
+
 
     const cookies = new Cookies();
     var navigate = useNavigate()
@@ -17,14 +22,19 @@ const Header = props => {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
 
 
+    const [auth,setAuth]=useState(null)
+
+    updateAuthHeader=()=>{
+        setAuth(checkAuth())
+    }
+
+    useEffect(()=>{
+        updateAuthHeader()
+    },[])
+
+
     const authClick = () => {
-        if (isLoggedIn) {
-            cookies.remove('auth',{ path: '/' })
-            setIsLoggedIn(false)
-            navigate('../login')
-        } else {
-            navigate('/login')
-        }
+        logout()
     }
 
     useEffect(() => {
@@ -65,19 +75,18 @@ const Header = props => {
                         <div className={'header-right-wrapper'}>
                             <div className={'header-right-container'}>
                                 <div className={'header-register-container'}>
-                                    <button onClick={authClick}>
-                                        {
-                                            isLoggedIn ? (
+                                    {
+                                        auth!==null && auth?(
+                                            <button onClick={authClick}>
                                                 <div>
                                                     Logout
                                                 </div>
-                                            ) : (
-                                                <div>
-                                                    Login
-                                                </div>
-                                            )
-                                        }
-                                    </button>
+                                            </button>
+                                        ):(
+                                            <div/>
+                                        )
+                                    }
+
                                 </div>
 
                             </div>
@@ -124,3 +133,4 @@ const Header = props => {
 }
 
 export default Header
+export {updateAuthHeader}

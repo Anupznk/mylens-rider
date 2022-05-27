@@ -1,8 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import RiderCard from "./RiderCard";
 import {Grid} from "@mui/material";
+import {getPendings} from "../../actions/content";
+import {setLoading} from "../Auth";
 
 const PendingList = props => {
+
+    const [list,setList]=useState(null)
+
+    const fetchPendings=async ()=>{
+        setLoading(true)
+        var arr=await getPendings()
+        setList(arr)
+        console.log(arr)
+        setLoading(false)
+    }
+
+    useEffect(()=>{
+        fetchPendings()
+    },[])
 
     const pendingList = {
         items: [
@@ -31,9 +47,10 @@ const PendingList = props => {
         <Grid container>
 
             <Grid item xs={12} marginRight={2} marginLeft={-1} marginTop={-1}>
-            {pendingList.items?.map((singleItem) => (
+            {list?.map((singleItem) => (
                 <RiderCard singleItem={singleItem} />
             ))}
+
 
             </Grid>
 

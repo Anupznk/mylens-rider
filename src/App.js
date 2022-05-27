@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import Login from "./components/auth/Login";
 import RiderCardDetails from "./components/rider/RiderCardDetails";
 import RiderOrder from "./components/rider/RiderOrder";
+import Auth from "./components/Auth";
 
 var showToast
 
@@ -36,13 +37,17 @@ function App() {
           pauseOnHover
       />
 
-      <Routes>
-        <Route path="/" exact element={<Home/>}/>
-        <Route path="/login" exact element={<Login/>}/>
-          <Route path="/card-details" exact element={<RiderCardDetails/>}/>
-        <Route path="/order" exact element={<RiderOrder/>}/>
 
-      </Routes>
+
+      <Auth/>
+
+      {/*<Routes>*/}
+      {/*  <Route path="/" exact element={<Home/>}/>*/}
+      {/*  <Route path="/login" exact element={<Login/>}/>*/}
+      {/*    <Route path="/card-details" exact element={<RiderCardDetails/>}/>*/}
+      {/*  <Route path="/order" exact element={<RiderOrder/>}/>*/}
+
+      {/*</Routes>*/}
 
     </div>
   );

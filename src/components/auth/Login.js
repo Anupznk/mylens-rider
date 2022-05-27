@@ -5,9 +5,11 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import {showToast} from "../../App";
 import Cookies from 'universal-cookie';
-import Header from "../home/Header";
+import Header, {updateAuthHeader} from "../home/Header";
 import {base_url} from "../../index";
 import {useNavigate} from "react-router-dom";
+import {setLoading, updateAuth} from "../Auth";
+import {checkAuth, login} from "../../actions/auth";
 
 const Login = props => {
 
@@ -30,34 +32,25 @@ const Login = props => {
         console.log(event.target.value);
     };
 
-    function logIn() {
+    async function logIn() {
         const phone = state.phone;
         const password = state.password;
+
+
 
         if (state.phone == "" || state.password == "" || state.phone == null || state.password == null) {
             showToast("Don't keep any of the fields empty")
         } else {
             // setLoading(true);
-            axios.post(base_url + '/rider/auth/login', {
-                phone: phone,
-                password: password,
-                type: 'rider'
-            }).then(res => {
+            setLoading(true)
+            var res=await login(state.phone,state.password)
+            if(!res){
+                showToast('Login failed')
+            }
+            setLoading(false)
+            updateAuth()
+            updateAuthHeader()
 
-                showToast(" Rider Logged in successfully");
-                // setLoggedIn(true);
-                cookies.set('auth', JSON.stringify(res.data), {path: '/', maxAge: COOKIE_AGE})
-                console.log('login response ', res.data)
-
-                navigate('../')
-
-                // setUserInfo(res.data);
-
-            }).catch(err => {
-                // setLoading(false);
-                console.log(err)
-                showToast(" Rider Login failed");
-            })
         }
     }
 
@@ -65,7 +58,6 @@ const Login = props => {
         <div style={{backgroundColor: "#F3F4F8"}}>
             <Grid container spacing={1} padding={1}>
 
-                <Header bg={'#293341'}/>
                 <br/><br/>
 
                 <Grid item xs={12} md={12}>
@@ -146,7 +138,7 @@ const Login = props => {
                         </Card>
                     </center>
                 </Grid>
-                <Grid item xs={1} md={3}></Grid>
+
 
 
             </Grid>

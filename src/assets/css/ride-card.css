@@ -13,6 +13,7 @@
     border: 2px rgba(37, 143, 103, .3) solid;
     border-radius: 5em;
     padding: .5em;
+    margin-right: 5px;
     margin-bottom: 1em;
     font-weight: bold;
     animation: ripple 600ms linear;

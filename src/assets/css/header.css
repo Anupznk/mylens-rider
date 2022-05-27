@@ -18,6 +18,7 @@
     position: fixed;
     width:100%;
     z-index: 2;
+    margin-top: 0px;
 }
 
 .header-right-wrapper{
